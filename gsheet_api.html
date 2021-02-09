@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Expense Manager</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container-fluid">
+<div class="col-sm-4 offset-sm-4 p-2">
+<button class="btn btn-dark btn-block text-left font-weight-bold  pl-2 mb-2">Expense Manager</button>
+<button id="authorize_button" class="btn-block btn btn-success mb-2" style="display:none">Authorize</button>
+<input type="text" class="form-control mb-2" placeholder="Expense Name" id="exname" />
+<input type="number" class="form-control mb-2" placeholder="Amount" id="amt" />
+<div class="row mb-2">
+<span class="cd col text-right">Credit</span>
+<label class="switch"><input type="checkbox" id="cd" checked><span class="slider round"></span></label>
+<span class="cd col text-left">Debit</span>
+</div>    
+<button id="bton" class="btn text-center btn-block btn-warning mb-2" onclick="appendData()">Append</button>
+<p id="content" class="mb-2"></p>
+<button id="signout_button" class="btn btn-danger btn-block" style="display: none;">Sign Out</button>    
+</div>
+</div>
+<script type="text/javascript" src="gsheet_api.js"></script>
+<script async defer src="https://apis.google.com/js/api.js"
+onload="this.onload=function(){};handleClientLoad()"
+onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+</body>
+</html>
