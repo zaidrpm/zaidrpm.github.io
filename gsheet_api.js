@@ -96,6 +96,8 @@ function appendData(){
 	var request = gapi.client.sheets.spreadsheets.values.append(obj);
       request.then(function(response) {
         appendPre("Success->"+exname);
+	document.getElementById('exname').value='';
+	document.getElementById('amt').value='';
       }, function(reason) {
         appendPre('Error')//+ reason.result.error.message);
       });
