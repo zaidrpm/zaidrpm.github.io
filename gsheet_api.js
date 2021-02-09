@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $('#apbtn').click(function(e) {
+        $('#exname').trigger('click');
+	appendData();
+    });
+});  
 var CLIENT_ID = "278334787326-bll5bb7j76upbaitsrbt9p39agh7asvv.apps.googleusercontent.com";
       var API_KEY = "AIzaSyCveBWiB6ElXTqMzP0oJ1CB8U4UqLJTREU";
       var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
@@ -98,8 +104,6 @@ function appendData(){
         appendPre("Success->"+exname);
 	document.getElementById('exname').value='';
 	document.getElementById('amt').value='';
-	document.getElementById('exname').focus();
-	document.getElementById('exname').select();
       }, function(reason) {
         appendPre('Error')//+ reason.result.error.message);
       });
