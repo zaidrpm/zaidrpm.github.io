@@ -86,7 +86,7 @@ function appendData(){
 	today = dd+'-'+mm+'-'+yyyy;
 	var exname=document.getElementById('exname').value;
 	var amt=document.getElementById('amt').value;
-	var typ=document.getElementById('cd').value?'D':'C'; 
+	var typ=document.getElementById('cd').checked?'D':'C'; 
 	var obj = {"spreadsheetId": sheetid,
 		   "majorDimension":"ROWS",
    		   "range": "Sheet1!A:D",
