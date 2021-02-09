@@ -99,6 +99,7 @@ function appendData(){
 	document.getElementById('exname').value='';
 	document.getElementById('amt').value='';
 	document.getElementById('exname').focus();
+	document.getElementById('exname').select();
       }, function(reason) {
         appendPre('Error')//+ reason.result.error.message);
       });
