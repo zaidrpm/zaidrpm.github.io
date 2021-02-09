@@ -98,6 +98,7 @@ function appendData(){
         appendPre("Success->"+exname);
 	document.getElementById('exname').value='';
 	document.getElementById('amt').value='';
+	document.getElementById('exname').focus();
       }, function(reason) {
         appendPre('Error')//+ reason.result.error.message);
       });
