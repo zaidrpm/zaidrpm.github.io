@@ -99,7 +99,7 @@ function appendData(){
    		   "valueInputOption":"RAW",
    		   "values": [[today,exname,amt,typ]]
    		   }
-	var request = gapi.client.sheets.spreadsheets.values.append(obj,value_input_option='USER_ENTERED').
+	var request = gapi.client.sheets.spreadsheets.values.append(obj,value_input_option='USER_ENTERED');
       request.then(function(response) {
         appendPre("Success->"+exname);
 	document.getElementById('exname').value='';
