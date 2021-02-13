@@ -105,6 +105,6 @@ function appendData(){
 	document.getElementById('exname').value='';
 	document.getElementById('amt').value='';
       }, function(reason) {
-        appendPre('Error')//+ reason.result.error.message);
+        appendPre('Error'+ reason.result.error.message);
       });
 	}
