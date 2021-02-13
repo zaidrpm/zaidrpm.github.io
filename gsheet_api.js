@@ -96,10 +96,10 @@ function appendData(){
 	var obj = {"spreadsheetId": sheetid,
 		   "majorDimension":"ROWS",
    		   "range": "Sheet1!A:D",
-   		   "valueInputOption":"RAW",
+   		   "valueInputOption":"USER_ENTERED",
    		   "values": [[today,exname,amt,typ]]
    		   }
-	var request = gapi.client.sheets.spreadsheets.values.append(obj,value_input_option='USER_ENTERED');
+	var request = gapi.client.sheets.spreadsheets.values.append(obj);
       request.then(function(response) {
         appendPre("Success->"+exname);
 	document.getElementById('exname').value='';
