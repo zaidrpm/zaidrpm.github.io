@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>DP Table</title>
+<style>
+td {
+border:1px solid grey;
+width:35px;
+height:35px;
+border-collapse:collapse;
+font-size:16px;
+text-align:center;
+}
+.leftmost {
+border-left-width:0px;
+background-color:#292b2c ;
+color:white;
+}
+.topmost {
+border-top-width:0px;
+background-color:#292b2c;
+color:white;
+}
+#main {
+margin:auto;
+}
+</style>
+<script>
+var r=1,c=1;
+var tab,rmax=0,cmax=0;
+
+function inittab() {
+tab = document.getElementById('main');
+tab.rows[r].cells[c].style.backgroundColor='#6495ED';
+rmax=tab.rows.length -1;
+cmax=tab.rows[0].cells.length -1;
+
+const cells = document.querySelectorAll('td');
+cells.forEach(cell => {
+  cell.addEventListener('click', () => {
+ 	let rt=cell.closest('tr').rowIndex;
+ 	let ct=cell.cellIndex;
+ 	changeColors(rt,ct);
+ 	r=rt;
+ 	c=ct; 
+  })  
+})
+}
+
+function changeColors(rn,cn) {
+if(r==0 || c==0)
+tab.rows[r].cells[c].style.backgroundColor='#292b2c';
+else
+tab.rows[r].cells[c].style.backgroundColor='white';
+tab.rows[rn].cells[cn].style.backgroundColor='#6495ED';
+}
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+  e = e || window.event;
+  if (e.keyCode == '38' && r>0) {
+    //up arrow
+    changeColors(r-1,c);
+    r--;
+  } else if (e.keyCode == '40' && r<rmax) {
+    // down arrow
+    changeColors(r+1,c)
+    r++;
+  } else if (e.keyCode == '37' && c>0) {
+    // left arrow
+    changeColors(r,c-1)
+    c--;
+  } else if (e.keyCode == '39' && c<cmax) {
+    // right arrow
+    changeColors(r,c+1)
+    c++;
+  }
+  else if(e.keyCode>=48 && e.keyCode<=90){
+  tab.rows[r].cells[c].innerHTML = String.fromCharCode(e.keyCode).toLowerCase();
+  }
+  else if(e.keyCode==8 && tab.rows[r].cells[c].innerHTML.length>0){
+  tab.rows[r].cells[c].innerHTML = tab.rows[r].cells[c].innerHTML.substr(0,tab.rows[r].cells[c].innerHTML.length-1);
+  }
+}
+
+function reset() {
+    let tab=document.getElementById('main');
+    for(let i=1;i<tab.rows.length;i++){
+        for(let j=1;j<tab.rows[0].cells.length;j++) {
+            tab.rows[i].cells[j].innerHTML='';
+        }
+    }
+}
+</script>
+</head>
+<body onload='inittab()'>
+<h2 style='text-align:center;margin-top:50px;'>DP Table</h2>
+<table cellspacing="0" id='main'>
+<tr>
+	<td class="leftmost topmost" >#</td>
+	<td class="topmost" >1</td>
+	<td class="topmost" >2</td>
+	<td class="topmost" >3</td>
+	<td class="topmost" >4</td>
+	<td class="topmost" >5</td>
+	<td class="topmost" >6</td>
+	<td class="topmost" >7</td>
+	<td class="topmost" >8</td>
+	<td class="topmost" >9</td>
+	<td class="topmost" >10</td>
+	<td class="topmost" >11</td>
+	
+</tr>
+
+<tr>
+	<td class="leftmost" >1</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >2</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >3</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >4</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >5</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >6</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >7</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >8</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >9</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >10</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+
+<tr>
+	<td class="leftmost" >11</td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+	<td ></td>
+</tr>
+</table>
+<button style='margin:auto;display:block;margin-top:20px;' onclick='reset()'>Reset Values</button>
+</body>
+</html>
